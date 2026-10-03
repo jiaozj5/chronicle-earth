@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-02",
+  "automated": {"tests": 146, "passed": 146, "javascriptModules": 80, "finalTargetedChecks": "6 provider/chat tests and 80 modules passed after final validation fixes"},
+  "codex": {
+    "authentication": "existing ChatGPT login managed by the official Codex app-server",
+    "catalog": "model/list; 8 models returned by the live account, not hardcoded",
+    "modelSelectedAndUsed": "gpt-6.1-sol",
+    "effort": "low",
+    "realInferenceVerified": true,
+    "realDynamicToolCallsVerified": ["selection_resolve", "annotation_create", "reader_navigate"],
+    "result": "Created a two-block exact-text underline with note 慢读是主动提问, then navigated from page 2 to page 3 in the isolated fixture",
+    "annotationId": "annotation_8bbfe09a-9751-426a-af41-ffc8c596e23e",
+    "operationId": "libraryOperation_53d128bf-eb37-4261-9ca9-9fe5293830c9",
+    "credentialsReadOrCopied": false,
+    "persistentCodexThreadsCreated": false
+  },
+  "doubao": {
+    "transport": "official Ark /api/v3/chat/completions SSE with function tools",
+    "liveInferenceVerified": false,
+    "reason": "No user API key was provided; credentials must be entered in the application settings",
+    "automatedProtocolChecks": ["UTF-8 and SSE chunk fragmentation", "streamed tool argument assembly", "multiple rounds and tool result messages", "exact model selection", "cancellation", "truncated response rejection", "sanitized authentication errors", "official HTTPS endpoint validation", "server-only key persistence and redacted settings"],
+    "browserChecks": ["saved a synthetic model ID without a key in the isolated workspace", "configured model appears in picker", "text-only model disables page image", "missing key returns a clear error without a phantom message or response", "settings and selection survive reload"]
+  },
+  "agent": {
+    "tools": 16,
+    "scope": "current publication, rendition and reader session",
+    "writes": "explicit user requests; existing domain anchor validation and expected revisions",
+    "retry": "stable operation request IDs plus prior action receipts prevent duplicate writes",
+    "audit": "running, completed and failed operations persisted with each reply",
+    "externalShellMcpAppsPluginsEnabled": false,
+    "originalExternalMcpTools": 46
+  },
+  "browser": {
+    "workspace": "isolated synthetic PDF and local test workspace",
+    "checks": ["actual model selection and reply", "reasoning effort survives reload", "real tool calls change reader position", "annotation persists and appears in notes", "chat and operation receipts persist across reload", "model configuration UI", "provider capability controls"],
+    "consoleErrors": [],
+    "screenshots": ["screenshots/library/model-agent-tools.png", "screenshots/library/doubao-model-settings.png"],
+    "userBookTestWrites": false
+  },
+  "productionReadOnly": {
+    "serverRestarted": true,
+    "url": "http://127.0.0.1:4317",
+    "codexConnected": true,
+    "authType": "chatgpt",
+    "codexModelCount": 8,
+    "codexWarning": null,
+    "existingBookPages": 563,
+    "existingBookHeadings": 218,
+    "outlineSource": "pdf-bookmarks",
+    "outlineWarning": null,
+    "existingUserTabRefreshed": false
+  },
+  "limits": [
+    "Doubao requires the user's Ark API key and model permissions; live inference remains unverified",
+    "Per turn: up to 16 library tool calls; large results must be paged",
+    "General chat is supported; online web search and computer execution are not exposed",
+    "Only current-book reading, annotation and reader operations are offered inside chat; the separate MCP interface retains all 46 library tools",
+    "Existing history and page context limits remain in effect; slow or interrupted provider connections are explicit and retryable"
+  ]
+}

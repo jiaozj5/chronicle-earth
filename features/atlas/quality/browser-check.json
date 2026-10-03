@@ -1,0 +1,15 @@
+{
+  "test": "Real SQLite/HTTP/browser Atlas integration",
+  "date": "2026-10-01T22:34:58.696Z",
+  "checks": [
+    "offline local geography",
+    "old-name location selection",
+    "time range selection",
+    "real save and exploration",
+    "invalid date feedback",
+    "save and reselect TimeView",
+    "clear time filter",
+    "text-only custom place and multi-location"
+  ],
+  "errors": []
+}

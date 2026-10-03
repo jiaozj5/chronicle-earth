@@ -1,0 +1,563 @@
+{
+  "generatedAt": "2026-10-01T09:50:40.221Z",
+  "totalItems": 55,
+  "functionalItems": 47,
+  "performanceItems": 8,
+  "definition": "自动化验证只表示所列证据，不能把局部测试等同于全部用户任务或所有55项通过。",
+  "environment": "Windows 11 Home China, Node 24.19.0, Edge 154, Ryzen 7 H 255 / 16线程 / 31.27GiB；未验证R0普通8GiB设备和SSD类别。",
+  "gates": {
+    "G3": "真实模型A07未验收；用户选择稍后自行配置",
+    "G4": "有可重跑工程证据，仍有表内人工/部分验证项；不宣称55项全部通过",
+    "G5": "未开始8人任务与一周复访；没有真实用户反馈"
+  },
+  "matrix": [
+    {
+      "id": "C01",
+      "requirement": "一条记录关联两个城市，两个时间视图重叠",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json"
+      ],
+      "note": "多地点去重、重叠时间并集及原ID；UI多选另见Atlas验收。"
+    },
+    {
+      "id": "C02",
+      "requirement": "时间视图拆分、合并、改名",
+      "status": "自动化UI验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "features/atlas/quality/operations-browser.json"
+      ],
+      "note": "真实SQLite/HTTP/Edge图层改名、拆分、合并、删除；原记录ID、版本、正文不变。证据由A3提供并审阅。"
+    },
+    {
+      "id": "C03",
+      "requirement": "一条记录从 1850 年移到 1860 年，并改变地点",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/acceptance-latest.json"
+      ],
+      "note": "HTTP迁移时间/地点，旧投影撤销，新投影出现。"
+    },
+    {
+      "id": "C04",
+      "requirement": "删除某时空范围内最后一条记录，再恢复",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/acceptance-latest.json"
+      ],
+      "note": "删除最后合格记录、恢复原ID，投影同步。"
+    },
+    {
+      "id": "C05",
+      "requirement": "搜索与临时过滤排除全部当前结果",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/acceptance-latest.json"
+      ],
+      "note": "全文筛选0结果仍保留探索，未记录地点不点亮。"
+    },
+    {
+      "id": "C06",
+      "requirement": "同一创建/提交/采纳请求重试三次",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json"
+      ],
+      "note": "提交/采纳三次重放；不同载荷拒绝；后续引用变化仍重放原回执。"
+    },
+    {
+      "id": "C07",
+      "requirement": "两个编辑方基于同一旧版本提交，分别覆盖 Entry、Document、KnowledgeItem、Source、Persona、Place",
+      "status": "自动化验证，UI覆盖部分",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json",
+        "features/knowledge/qa/browser-results.json"
+      ],
+      "note": "六类真实SQLite/HTTP过期写入冲突；文稿UI另验证编辑内容保留，未逐一走六类冲突UI。"
+    },
+    {
+      "id": "C08",
+      "requirement": "已被论证引用的材料产生新版本",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json",
+        "features/knowledge/qa/browser-results.json"
+      ],
+      "note": "固定原文旧版本，材料更新提示及差异。"
+    },
+    {
+      "id": "C09",
+      "requirement": "提交正文后暂停索引/探索消费，积压不超过 100 次变更后恢复",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json"
+      ],
+      "note": "100项暂停索引，真实正文仍可读；水位落后可辨，恢复5秒内收敛。"
+    },
+    {
+      "id": "R01",
+      "requirement": "已选择地点图层，写一句话",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json"
+      ],
+      "note": "全局入口一句正文提交；不要求标题、分类、来源。"
+    },
+    {
+      "id": "R02",
+      "requirement": "不知道时间地点，直接记下",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/acceptance-latest.json"
+      ],
+      "note": "无时空记录保存检索；补齐仍原ID，无资格不点亮。"
+    },
+    {
+      "id": "R03",
+      "requirement": "中文输入法组合、换行、大段粘贴、撤销",
+      "status": "部分验证，真实IME待人工",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json"
+      ],
+      "note": "中文大段fill/换行/合成composition不误提交；未代替Windows真实中文输入法与撤销行为验证。"
+    },
+    {
+      "id": "R04",
+      "requirement": "写作中切换地图地点、进入引用后返回",
+      "status": "跨路由/归属已验证；精确锚点部分",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "features/knowledge/qa/browser-results.json",
+        "quality/full-chain-latest.json"
+      ],
+      "note": "真实UI在南京1850起草、切换上海1851、跨云上返回后正文/归属不变；引用返回保持对象版本。精确选区与长文滚动锚点仍需人工细测。"
+    },
+    {
+      "id": "R05",
+      "requirement": "自动保存后刷新或退出再进入",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json",
+        "quality/cloud-ui-latest.json"
+      ],
+      "note": "史书、来源草稿实际持久化后刷新恢复；知识文稿见知识模块浏览器证据。"
+    },
+    {
+      "id": "R06",
+      "requirement": "忘记标题，通过正文词或地点/时间查找",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json",
+        "quality/performance-latest.json",
+        "quality/shell-latest.json"
+      ],
+      "note": "中文正文和时空/类型查找、删除默认隐藏、草稿显式查询；CtrlK全局跨类型检索有root浏览器证据。"
+    },
+    {
+      "id": "R07",
+      "requirement": "从多条记录编入一份史书或体系",
+      "status": "自动化UI验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "features/knowledge/qa/browser-results.json",
+        "quality/full-chain-latest.json"
+      ],
+      "note": "三条实际史书记录编入同一文稿，逐条固定原ID/v1，自有正文独立；点击原记录并返回文稿通过。"
+    },
+    {
+      "id": "R08",
+      "requirement": "写未来预言、修改目标时间、补充评估",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json"
+      ],
+      "note": "预言首次版本、修订及固定版本评估，时间经过不改身份。"
+    },
+    {
+      "id": "R09",
+      "requirement": "写无来源、与已有材料矛盾的个人解释，再进行整理和讨论",
+      "status": "自动化验证，真实讨论待测",
+      "evidence": [
+        "quality/acceptance-latest.json",
+        "quality/cloud-ui-latest.json"
+      ],
+      "note": "无来源个人解释可保存；协议桩讨论不代替真实模型对矛盾观点的处理。"
+    },
+    {
+      "id": "R10",
+      "requirement": "采纳讨论为新记录或修订现有记录，重试后撤销",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json",
+        "quality/cloud-ui-latest.json"
+      ],
+      "note": "新建及修改型采纳、重试、撤销、过期目标、后续编辑保护。"
+    },
+    {
+      "id": "T01",
+      "requirement": "年/月/日、闰日、公元前、公元纪年边界、开放区间",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap"
+      ],
+      "note": "闰日、无效日期、公元前/纪年边界、开放区间由共用时间库单测。"
+    },
+    {
+      "id": "T02",
+      "requirement": "持续十年与具体年份不明的十年范围",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap"
+      ],
+      "note": "duration与uncertain查询相交但展示语义不同。"
+    },
+    {
+      "id": "T03",
+      "requirement": "“某朝时期”等无足够索引信息的原文",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap"
+      ],
+      "note": "原文未知或超出索引范围保留，不虚构日期。"
+    },
+    {
+      "id": "M01",
+      "requirement": "一城从 1 条增长到 10,000 条",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/performance-latest.json"
+      ],
+      "note": "10000条同城仅一个地点入口，count=10000；目录30条分页。"
+    },
+    {
+      "id": "M02",
+      "requirement": "密集相邻城市、多级缩放、选定其中一城",
+      "status": "算法验证，视觉抽查",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json"
+      ],
+      "note": "标签碰撞和选中聚合有单测，普通缩放截图抽查；密集场景全缩放级别人工待测。"
+    },
+    {
+      "id": "M03",
+      "requirement": "连续阅读多条记录和长文",
+      "status": "部分验证",
+      "evidence": [
+        "quality/acceptance-latest.json",
+        "quality/performance-latest.json"
+      ],
+      "note": "独立实底正文，100次普通/长文打开；地图与目录滚动完整任务人工待测。"
+    },
+    {
+      "id": "M04",
+      "requirement": "选择古名、同名、迁址及非城市地点",
+      "status": "算法验证，UI部分",
+      "evidence": [
+        "quality/unit-tests.tap"
+      ],
+      "note": "历史别名、同名不同ID；迁址候选完整UI尚未独立验证。"
+    },
+    {
+      "id": "M05",
+      "requirement": "记录一个区域或一条路线",
+      "status": "自动化UI与投影验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "features/atlas/quality/operations-browser.json"
+      ],
+      "note": "A3真实指针绘制路线/区域、撤回/结束/键盘取消，GeoJSON持久化；区域只点亮自身，不点亮内部城市。"
+    },
+    {
+      "id": "M06",
+      "requirement": "地理资源加载失败或断网",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/acceptance-latest.json"
+      ],
+      "note": "拦截land.geojson失败，界面提示后仍可保存与查找记录。"
+    },
+    {
+      "id": "K01",
+      "requirement": "无时空归属，直接建立学术体系",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/cloud-ui-latest.json",
+        "features/knowledge/qa/browser-results.json"
+      ],
+      "note": "无时空建立文稿，表格、公式、目录真实Edge渲染和保存。"
+    },
+    {
+      "id": "K02",
+      "requirement": "三条记录形成观点，注明前提、支持和反例",
+      "status": "业务与UI部分验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "features/knowledge/qa/browser-results.json"
+      ],
+      "note": "关系方向合法性与来源→观点支持UI通过；三条材料/反例组合任务待人工。"
+    },
+    {
+      "id": "K03",
+      "requirement": "同一知识项被多份文稿使用",
+      "status": "业务与固定导航验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/shell-latest.json"
+      ],
+      "note": "live/pinned独立语义、共享文稿引用块和反向引用单测；固定版本引用URL刷新仍保留revision。"
+    },
+    {
+      "id": "K04",
+      "requirement": "删除被引用的来源，随后恢复",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json"
+      ],
+      "note": "固定来源删除不级联丢失，旧版本可核验、恢复原ID。"
+    },
+    {
+      "id": "K05",
+      "requirement": "导入文本/Markdown/链接/图片和未解析附件",
+      "status": "自动化验证，格式覆盖部分",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/cloud-ui-latest.json",
+        "features/knowledge/qa/browser-results.json"
+      ],
+      "note": "文本、Markdown、未解析附件有实际保存/UI；链接校验与图片附件模型有单测，图片/链接导入全流程尚未独立走查。"
+    },
+    {
+      "id": "K06",
+      "requirement": "采纳一个讨论建议为新问题或修订观点，随后再编辑并尝试撤销",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json",
+        "quality/cloud-ui-latest.json"
+      ],
+      "note": "采纳带固定消息来源，撤销保护后续编辑，创建/修订幂等。"
+    },
+    {
+      "id": "N01",
+      "requirement": "地图→记录→观点→人物→采纳→原记录",
+      "status": "完整浏览器链验证；模型为协议桩",
+      "evidence": [
+        "quality/full-chain-latest.json"
+      ],
+      "note": "一次真实Edge/SQLite/HTTP任务：地图→草稿→记录→观点→冻结讨论→编辑采纳→讨论上下文→观点引用→同一原记录v1；逐段ID/版本核对。真实模型质量另见A07。"
+    },
+    {
+      "id": "N02",
+      "requirement": "断网时新建、修改、提交、检索本地内容，退出重启后继续",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json"
+      ],
+      "note": "浏览器屏蔽外部网络继续保存/找回，SQLite重开和草稿刷新；真实进程退出后UI整段另待人工。"
+    },
+    {
+      "id": "A01",
+      "requirement": "修改人物形象与表达风格",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/cloud-ui-latest.json"
+      ],
+      "note": "人物名称/诠释/风格/材料与原文分离，UI人物创建保存；形象上传UI未独立走查。"
+    },
+    {
+      "id": "A02",
+      "requirement": "只关联三份已导入材料，询问范围外事实",
+      "status": "协议/范围验证；真实模型待测",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json"
+      ],
+      "note": "可检索/未解析/不可用覆盖明确；模型是否按范围回应列入A07。"
+    },
+    {
+      "id": "A03",
+      "requirement": "回答包含原文引用，讨论期间更新一份来源并继续交流",
+      "status": "协议/核验验证；真实模型待测",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json",
+        "quality/cloud-ui-latest.json"
+      ],
+      "note": "冻结来源版本、原文逐字片段与越界伪引文拒绝；已核验标签有UI。"
+    },
+    {
+      "id": "A04",
+      "requirement": "同时存在别的人物资料及私人无关记录",
+      "status": "自动化协议验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json"
+      ],
+      "note": "实际发往loopback服务的载荷检查不含无关私人记录或来源新版本。"
+    },
+    {
+      "id": "A05",
+      "requirement": "超时、取消、断网、服务限额、错误输出",
+      "status": "自动化故障验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json"
+      ],
+      "note": "未配置、超时、取消、网络/认证、无效输出、失败重试；限额分支代码存在但真实供应商限额未触发。"
+    },
+    {
+      "id": "A06",
+      "requirement": "产生未采纳的讨论，采纳后追加消息/重试生成，再尝试撤销",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json",
+        "quality/cloud-ui-latest.json"
+      ],
+      "note": "消息稳定身份、未采纳不改史书、原子采纳、撤销、原讨论保留。"
+    },
+    {
+      "id": "A07",
+      "requirement": "至少两个资料范围明确的人物，各完成 10 项讨论任务",
+      "status": "未验收：等待用户配置真实模型",
+      "evidence": [
+        "tests/fixtures/real-model-evaluation.json"
+      ],
+      "note": "已预注册两个资料人物20项任务及16/20、零伪造原文门槛；没有任何真实模型评分。"
+    },
+    {
+      "id": "D01",
+      "requirement": "导出 V1 数据，再恢复到空工作空间",
+      "status": "完整基准自动化验证",
+      "evidence": [
+        "quality/acceptance-latest.json",
+        "quality/performance-latest.json",
+        "quality/shell-latest.json"
+      ],
+      "note": "三次V1备份恢复，98,320修订规范化摘要一致；每次100附件从实际文件重算SHA256；设置真实下载已验证。"
+    },
+    {
+      "id": "D02",
+      "requirement": "写入前/中/后故障、空间不足",
+      "status": "自动化故障注入验证",
+      "evidence": [
+        "quality/unit-tests.tap"
+      ],
+      "note": "写前/中/flush/回执故障、附件写故障与重启；未实际耗尽用户磁盘。"
+    },
+    {
+      "id": "D03",
+      "requirement": "导入包破损、缺附件、不兼容版本",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap",
+        "quality/acceptance-latest.json"
+      ],
+      "note": "破损/截断/缺附件/高版本拒绝；原工作区不变、导入失败可重试。"
+    },
+    {
+      "id": "D04",
+      "requirement": "数据迁移与索引/探索重建",
+      "status": "自动化验证",
+      "evidence": [
+        "quality/unit-tests.tap"
+      ],
+      "note": "初始化迁移回滚/未来版本保留、索引重建故障、恢复文件交换中断后重开恢复。"
+    },
+    {
+      "id": "P01",
+      "requirement": "输入至下一次可见文字更新",
+      "status": "本机目标达成；真实IME与R0待测",
+      "evidence": [
+        "quality/performance-recheck.json"
+      ],
+      "note": "100次按键至下一帧P95 12.80ms；英文键入，不代替真实中文输入法。"
+    },
+    {
+      "id": "P02",
+      "requirement": "用户停止输入至草稿持久化确认",
+      "status": "本机目标达成；R0待测",
+      "evidence": [
+        "quality/performance-recheck.json"
+      ],
+      "note": "100次停止输入至真实SQLite和已保存标签：P95 390.56ms，最大413.55ms。"
+    },
+    {
+      "id": "P03",
+      "requirement": "普通记录正式提交",
+      "status": "本机端到端目标达成；R0待测",
+      "evidence": [
+        "quality/performance-latest.json",
+        "quality/acceptance-latest.json",
+        "quality/performance-ui.json"
+      ],
+      "note": "100次HTTP持久化P95 20.03ms；补测提交至正确数量与canvas实际绘制后帧100次P95 419.4ms、最大455.2ms。"
+    },
+    {
+      "id": "P04",
+      "requirement": "文字加类型/时空条件查询首批结果",
+      "status": "本机UI目标达成；R0待测",
+      "evidence": [
+        "quality/performance-latest.json",
+        "quality/performance-recheck.json",
+        "quality/performance-ui.json"
+      ],
+      "note": "修复前HTTP P95 860.69ms；修复后100次HTTP472.21ms；100次含类型/时段/正文搜索至精确ID目录渲染P95 607.8ms（含180ms防抖）。"
+    },
+    {
+      "id": "P05",
+      "requirement": "地图停止拖动或改变时间后得到有效地点结果",
+      "status": "本机绘制目标达成；R0待测",
+      "evidence": [
+        "quality/performance-latest.json",
+        "quality/performance-recheck.json",
+        "quality/performance-ui.json"
+      ],
+      "note": "修复后100个不同年份HTTP P95 40.23ms；两图层实际canvas像素变化与数量完成100次P95 244.9ms。"
+    },
+    {
+      "id": "P06",
+      "requirement": "已加载目录中打开普通文本记录",
+      "status": "本机UI目标达成；R0待测",
+      "evidence": [
+        "quality/performance-latest.json"
+      ],
+      "note": "100次普通正文P95 288.98ms，100次100KiB长文310.68ms。"
+    },
+    {
+      "id": "P07",
+      "requirement": "离线启动至可开始书写",
+      "status": "暖机新上下文通过；冷机/R0待测",
+      "evidence": [
+        "quality/performance-latest.json"
+      ],
+      "note": "10次新浏览器上下文至可写（含关闭）P95 2155.79ms；本机服务已运行、OS缓存暖，不能称冷启动通过。"
+    },
+    {
+      "id": "P08",
+      "requirement": "V1 数据含约 500 MiB 附件导出/恢复",
+      "status": "本机数据/耗时达成；交互/R0部分",
+      "evidence": [
+        "quality/performance-latest.json"
+      ],
+      "note": "500MiB附件、备份总1.77GB：3次导出12.49–14.36s、恢复15.05–15.86s；真实进度回调，未独立测备份期间阅读帧率。"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-03",
+  "purpose": "First GitHub source and maintainer documentation handoff",
+  "applicationVersion": "0.2.0",
+  "environment": {"platform": "win32", "node": "v24.19.0"},
+  "commands": [
+    {"command": "node scripts/check.mjs", "exitCode": 0, "javascriptModules": 90},
+    {"command": "node --test", "exitCode": 0, "tests": 156, "passed": 156, "failed": 0, "skipped": 0, "cancelled": 0, "output": "quality/handoff-tests.txt"}
+  ],
+  "scope": "Documentation, current-state reconciliation, portable configuration examples and source publication. No application runtime behavior changed.",
+  "currentDirection": [
+    "Conversion belongs inside the library; old conversion links remain compatible",
+    "Built-in map place labels display Chinese names",
+    "External agents operate the reader through MCP/HTTP; in-app reader chat is disabled",
+    "Persona discussions remain a separate feature with user-configured model service"
+  ],
+  "notRerun": ["Full browser acceptance", "Large-scale performance", "OCR accuracy", "Real persona model evaluation", "User studies", "Clean-machine installation"],
+  "dataBoundary": "No personal workspace, source books, attachments, credentials, local generated MCP configuration or temporary test data included in the source repository",
+  "knownUnresolved": "Local server exited without an error log during prior troubleshooting; restart restored HTTP access but the exit cause is not established"
+}

@@ -1,0 +1,39 @@
+{
+  "suite": "Cloud knowledge, source and persona UI integration",
+  "environment": {
+    "date": "2026-10-01T23:32:32.310Z",
+    "node": "v24.19.0",
+    "platform": "win32",
+    "osRelease": "10.0.26200",
+    "osVersion": "Windows 11 Home China",
+    "cpu": "AMD Ryzen 7 H 255 w/ Radeon 780M Graphics      ",
+    "logicalProcessors": 16,
+    "totalMemoryGiB": 31.27,
+    "storage": "Filesystem on execution host; SSD type not independently verified",
+    "referenceR0Verified": false,
+    "network": "Local application and simulated provider use loopback; explicit request-blocking is described by each scenario"
+  },
+  "output": ".test-data/cloud-ui-1790897552067",
+  "provider": "Loopback protocol fixture; not A07",
+  "cases": [
+    {
+      "name": "材料录入、刷新草稿恢复、正式保存",
+      "status": "passed"
+    },
+    {
+      "name": "文稿、公式、表格和正文隔离脚本",
+      "status": "passed"
+    },
+    {
+      "name": "人物塑造、资料范围、冻结讨论、采纳与撤销",
+      "status": "passed"
+    },
+    {
+      "name": "深色阅读与窄窗口不裁剪内容",
+      "status": "passed"
+    }
+  ],
+  "browserErrors": [],
+  "passed": 4,
+  "failed": 0
+}

@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-02",
+  "tests": 119,
+  "passed": 119,
+  "syntaxModules": 58,
+  "toolCount": 46,
+  "runtime": "http://127.0.0.1:4317",
+  "browser": "Independent generated PDF and isolated Workspace; no user-book annotations changed",
+  "checks": [
+    "Draw and automatically persist a triangle",
+    "Type a note and automatically persist it",
+    "Drag an existing mark and preserve note identity",
+    "Resize triangle from 247 by 40 px to 332 by 105 px",
+    "Consecutive undo returns previous position",
+    "Reload retains edited position and dimensions",
+    "Arrow keys nudge by 1 px; Shift+arrow by 10 px",
+    "Simulated disk-full preserves draft and location; reload and retry succeed",
+    "Place a check with one click, resize from 24 by 24 px to 70 by 70 px",
+    "AI companion dialog displays current session and connection details",
+    "MCP JSON-RPC discovers context tool, reads exact quote and writes note through actual HTTP"
+  ],
+  "screenshot": "quality/screenshots/library/natural-notes.jpg",
+  "limitations": [
+    "Actual user tab could not be automatically refreshed because browser control rejected access; user must refresh",
+    "Text annotations retain exact text anchors; region marks support free movement",
+    "No freehand strokes, rotation or cross-page dragging",
+    "MCP client configuration remains a user setup step"
+  ]
+}

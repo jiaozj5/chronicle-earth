@@ -1,0 +1,64 @@
+{
+  "evidence": [
+    "转换页面没有启动阅读器会话，也没有加载 PDF.js。",
+    "独立转换、预览、下载与刷新均不创建藏书；明确加入后才建立一本书。",
+    "实际界面导入 Markdown，行内和独立公式渲染。",
+    "Agent 会话能读取人实际选中的规范原文。",
+    "含 emoji 的真实 DOM 选区转换为 code point 6..13；批注与高亮落盘。",
+    "界面撤销和重做保留批注身份。",
+    "整式公式可选中并圈注，无 KaTeX 文本重复。",
+    "刷新重新读取持久批注。",
+    "Agent 新批注自动显示，未提交的人工批注草稿保持原样。",
+    "PDF.js 原页与文字层显示，拖动框选区域持久化。",
+    "外部批注更新保留同一个 PDF 画布，不重新绘制整页。",
+    "Agent 定位工具将实际阅读窗口切换到扫描页。",
+    "扫描词框选区落盘；故意丢弃保存回执后重试仅产生一条批注。",
+    "1024 像素宽阅读与标记界面无水平溢出。"
+  ],
+  "errors": [],
+  "job": {
+    "stage": "conversion",
+    "title": "原生与扫描页",
+    "author": "",
+    "attachmentId": "att_d48b61f5-679a-44e1-bacf-19e049601bf6",
+    "attachmentIds": [
+      "att_d48b61f5-679a-44e1-bacf-19e049601bf6",
+      "att_09022aa8-34a4-4b5a-8d67-2250c9b2963b",
+      "att_8d2cf64e-4a00-42a0-8b41-bc4c364b9c8f",
+      "att_0486f238-481c-4d5b-a934-6982f2dc94fb"
+    ],
+    "originalName": "mixed.pdf",
+    "sourceSha256": "5b0416e2c90161a0504a815cd33341f973605bfb6f1b5a0c27c36c23b7346b91",
+    "mode": "auto",
+    "status": "complete",
+    "completedPages": 2,
+    "totalPages": 2,
+    "error": null,
+    "startedAt": "2026-10-02T00:08:50.230Z",
+    "rendition": {
+      "id": "rendition_4768ceac-8d97-4c48-9e4c-0a714916329d",
+      "structureAttachmentId": "att_09022aa8-34a4-4b5a-8d67-2250c9b2963b",
+      "createdAt": "2026-10-02T00:08:51.356Z",
+      "engine": "pdfium+windows-ocr",
+      "coverage": {
+        "totalPages": 2,
+        "readablePages": 2,
+        "unreviewedBlocks": 5,
+        "formulaRecognition": "source-or-original-only"
+      },
+      "attachmentIds": [
+        "att_09022aa8-34a4-4b5a-8d67-2250c9b2963b",
+        "att_8d2cf64e-4a00-42a0-8b41-bc4c364b9c8f",
+        "att_0486f238-481c-4d5b-a934-6982f2dc94fb"
+      ]
+    },
+    "coverage": {
+      "totalPages": 2,
+      "readablePages": 2,
+      "unreviewedBlocks": 5,
+      "formulaRecognition": "source-or-original-only"
+    },
+    "finishedAt": "2026-10-02T00:08:51.356Z"
+  },
+  "browser": "154.0.4258.48"
+}

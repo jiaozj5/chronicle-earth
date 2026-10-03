@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-02",
+  "automated": {"tests": 124, "passed": 124, "javascriptModules": 63},
+  "browser": {
+    "data": "isolated synthetic library, no writes to user publications",
+    "checks": ["WASD and direction-button navigation", "click a real book from the scene", "page-edge and repeated keyboard navigation", "restore page 4 after reload", "draw triangle, save, drag, turn away and return", "precise native PDF text selection with saved underline and exact quotation"],
+    "consoleErrors": [],
+    "screenshots": ["screenshots/library/immersive-room.png", "screenshots/library/immersive-reader.png"],
+    "notTested": ["physical touchscreen swipe", "user's existing browser tab"]
+  },
+  "existingBookReadOnly": {
+    "pages": 563, "outlineMs": 86, "pageMs": 88, "pageBlocks": 34, "annotationsMs": 97, "pageImageHttpStatus": 200,
+    "pdfRanges": [{"status": 206, "bytes": 65536, "ms": 85}, {"status": 206, "bytes": 65536, "ms": 16}]
+  },
+  "limitations": ["classification is a metadata-keyword display grouping and preserves explicit shelf fields", "page transitions use light perspective motion, not physical paper-corner simulation"]
+}

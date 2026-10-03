@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-02",
+  "scope": "Annotation preview, region gestures, save feedback and draft recovery",
+  "environment": "Codex in-app browser; isolated Workspace and generated one-page PDF",
+  "automated": {"syntaxModules": 54, "tests": 113, "passed": 113, "failed": 0},
+  "browserChecks": [
+    "Triangle preview uses a closed SVG path, circle preview uses an ellipse",
+    "Simulated ENOSPC before commit leaves body and region draft intact",
+    "Reload restores unsaved triangle, body and region; retry commits once",
+    "Editing a saved triangle changes its body and keeps the annotation count",
+    "Circle and triangle retain their distinct shapes after reload",
+    "Filled dot is visible at a single-click location",
+    "Both toolbar save and note-panel save persist the note body",
+    "Single-click with rectangle selected creates no tiny target and leaves save disabled",
+    "Final reload retains all three saved test annotations"
+  ],
+  "screenshot": "quality/screenshots/library/annotation-fix.jpg",
+  "userBookTestWrites": 0,
+  "limitations": ["Unsubmitted drafts live in sessionStorage; closing the browser session may discard them", "Cross-page selection and ambiguous native PDF text anchoring retain their existing limitations"]
+}

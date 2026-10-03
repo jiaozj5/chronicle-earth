@@ -1,0 +1,154 @@
+{
+  "suite": "V1 full-size synthetic benchmark",
+  "environment": {
+    "date": "2026-10-01T09:20:33.640Z",
+    "node": "v24.19.0",
+    "platform": "win32",
+    "osRelease": "10.0.26200",
+    "osVersion": "Windows 11 Home China",
+    "cpu": "AMD Ryzen 7 H 255 w/ Radeon 780M Graphics      ",
+    "logicalProcessors": 16,
+    "totalMemoryGiB": 31.27,
+    "storage": "Filesystem on execution host; SSD type not independently verified",
+    "referenceR0Verified": false,
+    "network": "Local application and simulated provider use loopback; initial benchmark did not enforce browser external-request blocking",
+    "freeGiBBefore": 311.16,
+    "browser": "154.0.4258.37"
+  },
+  "output": ".test-data/performance-1790846433567",
+  "dataset": {
+    "entries": 10000,
+    "normalBodyTargetBytes": 2048,
+    "longEntries": 100,
+    "longBodyTargetBytes": 102400,
+    "places": 500,
+    "timeViews": 100,
+    "documents": 20,
+    "knowledge": 2000,
+    "relations": 20000,
+    "sources": 100,
+    "sourceTextTargetMiB": 50,
+    "personas": 20,
+    "revisionsPerObject": 3,
+    "attachments": 100,
+    "attachmentMiB": 500
+  },
+  "results": {
+    "queryHTTP": {
+      "n": 100,
+      "p50Ms": 543.74,
+      "p95Ms": 860.69,
+      "maxMs": 992.06,
+      "targetP95Ms": 800,
+      "measurement": "HTTP complete response, warm SQLite index",
+      "targetMetOnThisHost": false
+    },
+    "atlasHTTP": {
+      "n": 100,
+      "p50Ms": 566.67,
+      "p95Ms": 758.01,
+      "maxMs": 1019.44,
+      "targetP95Ms": 500,
+      "measurement": "HTTP projection response; excludes final browser painting",
+      "targetMetOnThisHost": false
+    },
+    "commitHTTP": {
+      "n": 100,
+      "p50Ms": 15.03,
+      "p95Ms": 20.03,
+      "maxMs": 32.84,
+      "targetP95Ms": 500,
+      "measurement": "HTTP success after SQLite FULL commit",
+      "targetMetOnThisHost": true
+    },
+    "denseScene": {
+      "entries": 10000,
+      "markers": 1,
+      "count": 10000
+    },
+    "startupFreshContext": {
+      "n": 10,
+      "p50Ms": 1657.64,
+      "p95Ms": 2155.79,
+      "maxMs": 2155.79,
+      "targetP95Ms": 3000,
+      "measurement": "Fresh browser context/cache; warmed OS and running local service, includes context close; not cold OS startup",
+      "targetMetOnThisHost": true
+    },
+    "openNormalUI": {
+      "n": 100,
+      "p50Ms": 242.53,
+      "p95Ms": 288.98,
+      "maxMs": 338.76,
+      "targetP95Ms": 300,
+      "measurement": "Loaded directory row click to selected rendered prose in Edge",
+      "targetMetOnThisHost": true
+    },
+    "openLongUI": {
+      "n": 100,
+      "p50Ms": 255.19,
+      "p95Ms": 310.68,
+      "maxMs": 389.97,
+      "targetP95Ms": 800,
+      "measurement": "100 KiB entry row click to selected rendered prose in Edge",
+      "targetMetOnThisHost": true
+    },
+    "backup": [
+      {
+        "exportMs": 14357.9,
+        "restoreMs": 15052.6,
+        "targetMs": 120000,
+        "progressCallbacks": {
+          "export": 1872,
+          "restore": 1908
+        },
+        "bytes": 1772621824,
+        "revisionDigest": {
+          "count": 98320,
+          "sha256": "2fb122f5df71b05752d07d252bba7400b7d0bb1defab88bf308d532a6f563f45"
+        },
+        "actualAttachmentsRehashed": 100
+      },
+      {
+        "exportMs": 12970.8,
+        "restoreMs": 15857.7,
+        "targetMs": 120000,
+        "progressCallbacks": {
+          "export": 1865,
+          "restore": 1902
+        },
+        "bytes": 1772621824,
+        "revisionDigest": {
+          "count": 98320,
+          "sha256": "2fb122f5df71b05752d07d252bba7400b7d0bb1defab88bf308d532a6f563f45"
+        },
+        "actualAttachmentsRehashed": 100
+      },
+      {
+        "exportMs": 12492.5,
+        "restoreMs": 15110.2,
+        "targetMs": 120000,
+        "progressCallbacks": {
+          "export": 1866,
+          "restore": 1891
+        },
+        "bytes": 1772621824,
+        "revisionDigest": {
+          "count": 98320,
+          "sha256": "2fb122f5df71b05752d07d252bba7400b7d0bb1defab88bf308d532a6f563f45"
+        },
+        "actualAttachmentsRehashed": 100
+      }
+    ]
+  },
+  "limitations": [
+    "Execution host is not certified R0 hardware.",
+    "Cold OS cache and physical SSD class are not independently controlled.",
+    "Model and real-user quality are excluded."
+  ],
+  "seedMs": 64812.6667,
+  "fixtureObjects": 32740,
+  "fixtureRevisions": 98220,
+  "browserErrors": [],
+  "status": "completed"
+}

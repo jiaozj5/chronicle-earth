@@ -1,0 +1,9 @@
+{
+  "passed": [
+    "Ctrl+K targets global search; mixed-type results navigate to exact source.",
+    "Pinned revision in the URL survives full browser reload after source changes.",
+    "Model connection can be saved and cleared without exposing its secret.",
+    "Settings export produces a real downloadable complete backup."
+  ],
+  "errors": []
+}

@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-01T23:33:07.572Z",
+  "checks": [
+    "Real stdio MCP lifecycle, discovery, read tools and structured errors",
+    "Map dominates page; writing pane closes/reopens without discarding the saved draft; reading expands",
+    "External model write appears without reload and without replacing the open draft; retry creates no duplicate",
+    "External write followed by local draft commit before polling is still consumed, without changing the editor",
+    "Failed map refresh keeps the change cursor pending; retry updates the currently read record",
+    "Map selection opens filtered directory; selecting a record opens its reader; 390px viewport has no horizontal overflow",
+    "Settings exposes a usable absolute-path MCP configuration without secrets"
+  ],
+  "errors": [],
+  "screenshots": ".test-data/map-agent-ui-1790897575357"
+}

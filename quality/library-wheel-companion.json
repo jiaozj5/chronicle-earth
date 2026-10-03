@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-02",
+  "automated": {"tests": 129, "passed": 129, "javascriptModules": 69},
+  "browser": {
+    "data": "isolated synthetic library; no writes to user publications",
+    "checks": [
+      "one downward wheel gesture advances page 1 to page 2",
+      "PDF bookmark click navigates to page 4 and opens its children",
+      "at 121% zoom the first wheel gesture scrolls within page 4; the next gesture advances to page 5",
+      "PDF text layer and original page bounds align within 0.02 px at 121% zoom",
+      "collapsing the TOC keeps the companion visible; scrolling the sidebar does not turn pages",
+      "question draft survives reload and companion page context follows navigation",
+      "after fixing PDF.js hidden canvas layout, text drag at 121% selects exact quotation We read slowly, and displays it in the companion",
+      "document height remains 720 px at a 720 px viewport during drag; window scrollY remains zero",
+      "zoom reset returns to 100%"
+    ],
+    "consoleErrors": [],
+    "screenshot": "screenshots/library/wheel-companion-outline.png",
+    "notTested": ["physical Ctrl+wheel combination; binding verified by EventTarget regression test and shared zoom path verified through UI controls", "user's existing browser tab"]
+  },
+  "existingBookReadOnly": {
+    "pages": 563,
+    "headings": 218,
+    "outlineSource": "pdf-bookmarks",
+    "outlineWarning": null,
+    "firstHeadings": [{"title":"前言","page":3},{"title":"2.0版前言","page":5},{"title":"开源声明","page":8},{"title":"致谢","page":9},{"title":"符号说明","page":10}],
+    "firstOutlineMs": 493,
+    "pageMs": 98,
+    "pageImageHttpStatus": 200,
+    "pdfRangeHttpStatuses": [206,206]
+  },
+  "limitations": ["companion questions are copied to an external MCP-connected Agent; model responses are not embedded in the webpage", "PDFs without bookmarks or structured headings get physical-page navigation, not inferred chapters"]
+}

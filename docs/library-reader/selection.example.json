@@ -1,0 +1,42 @@
+{
+  "exampleOnly": true,
+  "profile": "chronicle-reading-1",
+  "publicationId": "publication_example",
+  "renditionId": "rendition_example_1",
+  "resourceUri": "urn:chronicle:rendition_example_1:block_example_1",
+  "block": {
+    "id": "block_example_1",
+    "text": "阅读📚时，要区分原文与批注。",
+    "pageIndex": 0,
+    "recognition": {
+      "method": "manual",
+      "status": "verified",
+      "confidence": null
+    },
+    "kind": "paragraph",
+    "runs": [
+      {
+        "text": "阅读📚时，要区分原文与批注。"
+      }
+    ],
+    "sourceRegions": []
+  },
+  "targets": [
+    {
+      "kind": "text",
+      "blockId": "block_example_1",
+      "start": 6,
+      "end": 13,
+      "exact": "区分原文与批注",
+      "prefix": "阅读📚时，要",
+      "suffix": "。"
+    }
+  ],
+  "offsetUnit": "unicode-code-point",
+  "normalization": "NFC-LF",
+  "legacyComparison": {
+    "offsetUnit": "utf-16-code-unit",
+    "start": 7,
+    "end": 14
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "suite": "Focused performance recheck using the full persisted V1 fixture",
+  "environment": {
+    "date": "2026-10-01T09:31:19.021Z",
+    "node": "v24.19.0",
+    "platform": "win32",
+    "osRelease": "10.0.26200",
+    "osVersion": "Windows 11 Home China",
+    "cpu": "AMD Ryzen 7 H 255 w/ Radeon 780M Graphics      ",
+    "logicalProcessors": 16,
+    "totalMemoryGiB": 31.27,
+    "storage": "Filesystem on execution host; SSD type not independently verified",
+    "referenceR0Verified": false,
+    "network": "Browser blocks non-loopback requests; all test API is local"
+  },
+  "originalReport": "quality/performance-latest.json",
+  "originalDataset": {
+    "entries": 10000,
+    "normalBodyTargetBytes": 2048,
+    "longEntries": 100,
+    "longBodyTargetBytes": 102400,
+    "places": 500,
+    "timeViews": 100,
+    "documents": 20,
+    "knowledge": 2000,
+    "relations": 20000,
+    "sources": 100,
+    "sourceTextTargetMiB": 50,
+    "personas": 20,
+    "revisionsPerObject": 3,
+    "attachments": 100,
+    "attachmentMiB": 500
+  },
+  "results": {
+    "queryHTTP": {
+      "n": 100,
+      "p50Ms": 332.14,
+      "p95Ms": 472.21,
+      "maxMs": 927.94,
+      "targetP95Ms": 800,
+      "targetMetOnThisHost": true
+    },
+    "atlasHTTP": {
+      "n": 100,
+      "p50Ms": 32.46,
+      "p95Ms": 49.3,
+      "maxMs": 53.3,
+      "targetP95Ms": 500,
+      "targetMetOnThisHost": true
+    },
+    "atlasVariedHTTP": {
+      "n": 100,
+      "p50Ms": 20.37,
+      "p95Ms": 40.23,
+      "maxMs": 56.07,
+      "targetP95Ms": 500,
+      "targetMetOnThisHost": true
+    },
+    "inputVisibleUI": {
+      "n": 100,
+      "p50Ms": 12.15,
+      "p95Ms": 12.8,
+      "maxMs": 85.6,
+      "targetP95Ms": 100,
+      "measurement": "Key dispatch through next animation frame; English keystrokes, not OS Chinese IME",
+      "targetMetOnThisHost": true
+    },
+    "draftPersistedUI": {
+      "n": 100,
+      "p50Ms": 385.09,
+      "p95Ms": 390.56,
+      "maxMs": 413.55,
+      "targetMaxMs": 1000,
+      "measurement": "Fill completion to actual SQLite draft and UI saved label",
+      "targetMetOnThisHost": true
+    }
+  },
+  "scope": "Does not replace the three independently verified full backup runs",
+  "backgroundLoad": "No other benchmark intentionally run in parallel; OS/background developer activity uncontrolled",
+  "status": "completed"
+}

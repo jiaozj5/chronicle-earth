@@ -1,0 +1,15 @@
+import {mkdir,writeFile} from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {AGENT_GUIDE} from '../features/library/agent-guide.js';
+import {codexConfig} from '../features/library/companion.js';
+import {libraryOpenApi} from '../features/library/openapi.js';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),base=process.env.CHRONICLE_URL||'http://127.0.0.1:4317';
+const url=new URL(base);if(url.protocol!=='http:'||!['localhost','127.0.0.1'].includes(url.hostname)||url.pathname!=='/'||url.username||url.password||url.search||url.hash)throw new Error('CHRONICLE_URL 必须是本机服务地址');
+const target=path.join(root,'integrations','chronicle-library');await mkdir(target,{recursive:true});
+const connection={mcpServers:{'chronicle-library':{command:process.execPath,args:[path.join(root,'scripts','library-mcp.mjs')],env:{CHRONICLE_URL:url.origin}}}};
+await writeFile(path.join(target,'codex.toml'),codexConfig(connection)+'\n');
+await writeFile(path.join(target,'mcp.json'),JSON.stringify(connection,null,2)+'\n');
+await writeFile(path.join(target,'AGENT_GUIDE.md'),AGENT_GUIDE);
+await writeFile(path.join(target,'openapi.json'),JSON.stringify(libraryOpenApi(url.origin),null,2)+'\n');
+console.log('已导出 Agent 接入文件：'+target+'\n仅生成配置，未修改任何客户端设置。');

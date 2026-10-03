@@ -1,0 +1,64 @@
+{
+  "suite": "N01 full browser chain and R07 three-record compilation",
+  "environment": {
+    "date": "2026-10-01T23:32:40.076Z",
+    "node": "v24.19.0",
+    "platform": "win32",
+    "osRelease": "10.0.26200",
+    "osVersion": "Windows 11 Home China",
+    "cpu": "AMD Ryzen 7 H 255 w/ Radeon 780M Graphics      ",
+    "logicalProcessors": 16,
+    "totalMemoryGiB": 31.27,
+    "storage": "Filesystem on execution host; SSD type not independently verified",
+    "referenceR0Verified": false,
+    "network": "Local application and simulated provider use loopback; explicit request-blocking is described by each scenario"
+  },
+  "output": ".test-data/full-chain-1790897559840",
+  "provider": "Explicit loopback protocol fixture, not A07",
+  "steps": [
+    {
+      "name": "地图选择时间地点→起草；改地图与跨路由不改变草稿归属",
+      "status": "passed"
+    },
+    {
+      "name": "追加两条记录，三条史书内容保持独立身份",
+      "status": "passed"
+    },
+    {
+      "name": "记录→形成观点，固定引用仍指向原记录v1",
+      "status": "passed"
+    },
+    {
+      "name": "观点→人物讨论→编辑采纳，范围和消息版本不漂移",
+      "status": "passed"
+    },
+    {
+      "name": "采纳后沿讨论上下文→观点引用返回同一原记录v1",
+      "status": "passed"
+    },
+    {
+      "name": "三条记录编入同一文稿，自有文字与原记录均保持独立",
+      "status": "passed"
+    }
+  ],
+  "browserErrors": [],
+  "identities": {
+    "entryIds": [
+      "entry_ccbed795-b04d-4df1-8abc-4f6f874eebe1",
+      "entry_fbbea8c5-b787-4be6-8613-9d4efbc04af3",
+      "entry_848822a3-1813-4b3a-bffe-2d4f790e0e30"
+    ],
+    "entryRevisions": [
+      1,
+      1,
+      1
+    ],
+    "claimId": "knowledge_1a8e3f06-683c-48b0-acfb-cfd3f7575ba7",
+    "discussionId": "discussion_start_8f2c78bc-1c72-4763-8816-a88e1c978ac6",
+    "messageId": "reply_turn_11266335-ec3c-4c48-8860-15d307ac59d9",
+    "messageRevision": 2,
+    "adoptedId": "adopted_adoption_e128260f-b314-4760-b647-bfda3e489160",
+    "documentId": "document_80d5382f-e88d-496c-96f2-8c8d7e4c8d1f"
+  },
+  "status": "passed"
+}

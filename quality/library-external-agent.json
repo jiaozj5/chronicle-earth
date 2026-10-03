@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-02",
+  "direction": "External Agent clients perform conversation and model selection; Chronicle exposes reading/editing operations",
+  "automated": {"tests": 151, "passed": 151, "javascriptModules": 85},
+  "removedFromActiveApp": ["AI companion sidebar", "model picker", "Codex app-server startup", "Doubao model requests"],
+  "legacyData": "Existing chat records and model settings files preserved; old chat endpoints return HTTP 410",
+  "externalContract": {
+    "tools": 46,
+    "internalReaderSyncExcluded": true,
+    "transports": ["STDIO MCP", "same-origin loopback HTTP JSON"],
+    "descriptions": ["closed tool JSON Schema", "OpenAPI 3.1", "initialize instructions", "library_agent_guide tool", "chronicle-library://guide resource", "library-assist prompt"],
+    "images": "book_get_asset adds MCP image content for PNG/JPEG/WebP up to 8 MiB after publication ownership validation",
+    "readerCommands": "pending → browser ACK → applied/failed; stale heartbeat cannot overwrite pending command",
+    "persistentWrites": "existing domain transactions, expected revisions, idempotent request IDs and operation receipts"
+  },
+  "integrationTest": {
+    "client": "separate Node MCP process over stdio, not an in-app model or simulated UI response",
+    "workspace": "isolated synthetic PDF and local test workspace",
+    "realModelInferenceThisTurn": false,
+    "steps": ["initialize and discover tools", "read guide and live context", "navigate to page 3 and observe applied ACK", "search and validate exact text target", "create underline annotation", "update annotation with current revision", "read annotation and original context", "select text in browser and confirm ACK", "retrieve actual original page image as MCP image content"],
+    "annotationId": "annotation_655095e4-3039-4152-a564-6ea5c71dc833",
+    "operationId": "libraryOperation_93372de9-c121-42fa-9302-02309f8635ba",
+    "body": "由外部 Agent 通过 MCP 保存。已核对原文。"
+  },
+  "browser": {
+    "checks": ["left sidebar contains only full-height directory/search", "directory collapse removes sidebar space", "top Agent interface has actual configuration and guide links", "MCP-created note visible and persisted across reload", "exact underline appears on original PDF text through validated native text matching", "no chat or model selector in reading UI"],
+    "consoleErrors": [],
+    "screenshot": "screenshots/library/external-agent-reader.png"
+  },
+  "production": {"serverRestarted": true, "url": "http://127.0.0.1:4317", "userBookTestWrites": false, "userTabAutoRefreshed": false},
+  "clientSetup": {"codexConfigExported": true, "mcpJsonExported": true, "openapiExported": true, "guideExported": true, "userClientConfigurationModified": false},
+  "limits": [
+    "Ordinary Doubao web/desktop custom MCP support was not confirmed from official documentation; no successful connection is claimed",
+    "Cloud-only clients cannot reach this computer's loopback address; no public deployment was performed",
+    "Native PDF rendering fallback only matches a unique exact block after whitespace normalization; ambiguous or changed text is not guessed",
+    "Reader sessions and command ACKs are ephemeral; persistent annotation receipts are retained",
+    "Codex/other clients must enable the exported MCP configuration before their models can use these tools"
+  ]
+}

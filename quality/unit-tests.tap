@@ -1,0 +1,478 @@
+TAP version 13
+# Subtest: metadata projection follows committed edits, deletion, restoration and workspace identity
+ok 1 - metadata projection follows committed edits, deletion, restoration and workspace identity
+  ---
+  duration_ms: 109.8799
+  type: 'test'
+  ...
+# Subtest: route and region retain their own geometry and valid map anchor
+ok 2 - route and region retain their own geometry and valid map anchor
+  ---
+  duration_ms: 2.3721
+  type: 'test'
+  ...
+# Subtest: drawn place only explores its own ID, not enclosed cities
+ok 3 - drawn place only explores its own ID, not enclosed cities
+  ---
+  duration_ms: 1.9413
+  type: 'test'
+  ...
+# Subtest: geometry rejects insufficient, collinear, duplicate, crossed or invalid points
+ok 4 - geometry rejects insufficient, collinear, duplicate, crossed or invalid points
+  ---
+  duration_ms: 0.6661
+  type: 'test'
+  ...
+# Subtest: text coordinates support keyboard fallback and retain a dateline anchor
+ok 5 - text coordinates support keyboard fallback and retain a dateline anchor
+  ---
+  duration_ms: 0.4912
+  type: 'test'
+  ...
+# Subtest: prefiltered entry IDs override text scans while preserving exploration counts
+ok 6 - prefiltered entry IDs override text scans while preserving exploration counts
+  ---
+  duration_ms: 0.5069
+  type: 'test'
+  ...
+# Subtest: unique record counts for duplicate references and multi-place aggregation
+ok 7 - unique record counts for duplicate references and multi-place aggregation
+  ---
+  duration_ms: 4.6141
+  type: 'test'
+  ...
+# Subtest: drafts, inbox, deleted, unconfirmed, unknown and unlocated do not explore
+ok 8 - drafts, inbox, deleted, unconfirmed, unknown and unlocated do not explore
+  ---
+  duration_ms: 0.7716
+  type: 'test'
+  ...
+# Subtest: time layers union results; predictions keep identity and can explore
+ok 9 - time layers union results; predictions keep identity and can explore
+  ---
+  duration_ms: 0.5684
+  type: 'test'
+  ...
+# Subtest: temporary filtering changes only visible counts; move/delete/restore rebuilds
+ok 10 - temporary filtering changes only visible counts; move/delete/restore rebuilds
+  ---
+  duration_ms: 0.4089
+  type: 'test'
+  ...
+# Subtest: regional recording does not explore its cities
+ok 11 - regional recording does not explore its cities
+  ---
+  duration_ms: 0.2307
+  type: 'test'
+  ...
+# Subtest: 10000 records remain one city marker
+ok 12 - 10000 records remain one city marker
+  ---
+  duration_ms: 65.156
+  type: 'test'
+  ...
+# Subtest: place aliases support Chinese old names and English; same names stay distinct
+ok 13 - place aliases support Chinese old names and English; same names stay distinct
+  ---
+  duration_ms: 13.8878
+  type: 'test'
+  ...
+# Subtest: label boxes do not overlap and selected cluster remains individual
+ok 14 - label boxes do not overlap and selected cluster remains individual
+  ---
+  duration_ms: 1.6218
+  type: 'test'
+  ...
+# Subtest: CE year/month/day retain precision and half-open inclusive range
+ok 15 - CE year/month/day retain precision and half-open inclusive range
+  ---
+  duration_ms: 4.3893
+  type: 'test'
+  ...
+# Subtest: invalid dates and year zero receive a field error
+ok 16 - invalid dates and year zero receive a field error
+  ---
+  duration_ms: 1.486
+  type: 'test'
+  ...
+# Subtest: BCE chronology has no displayed year zero and crosses eras
+ok 17 - BCE chronology has no displayed year zero and crosses eras
+  ---
+  duration_ms: 0.7496
+  type: 'test'
+  ...
+# Subtest: open ranges distinguish strict and inclusive boundary semantics
+ok 18 - open ranges distinguish strict and inclusive boundary semantics
+  ---
+  duration_ms: 0.3471
+  type: 'test'
+  ...
+# Subtest: unknown, approximate and unindexed historical words remain truthful
+ok 19 - unknown, approximate and unindexed historical words remain truthful
+  ---
+  duration_ms: 0.4789
+  type: 'test'
+  ...
+# Subtest: duration and uncertain range compare equally while visibly distinct
+ok 20 - duration and uncertain range compare equally while visibly distinct
+  ---
+  duration_ms: 0.4287
+  type: 'test'
+  ...
+# Subtest: split and merge create only timeView changes with contiguous half-open boundaries
+ok 21 - split and merge create only timeView changes with contiguous half-open boundaries
+  ---
+  duration_ms: 8.6418
+  type: 'test'
+  ...
+# Subtest: split uses calendar boundaries across BCE/CE without year zero
+ok 22 - split uses calendar boundaries across BCE/CE without year zero
+  ---
+  duration_ms: 0.7341
+  type: 'test'
+  ...
+# Subtest: split refuses outside, uncertain, duration, empty and invalid date boundaries
+ok 23 - split refuses outside, uncertain, duration, empty and invalid date boundaries
+  ---
+  duration_ms: 2.3363
+  type: 'test'
+  ...
+# Subtest: merge rejects disjoint time without silently filling its gap
+ok 24 - merge rejects disjoint time without silently filling its gap
+  ---
+  duration_ms: 0.4023
+  type: 'test'
+  ...
+# Subtest: rename and delete preserve exact time query and expected revision
+ok 25 - rename and delete preserve exact time query and expected revision
+  ---
+  duration_ms: 0.3117
+  type: 'test'
+  ...
+# Subtest: one sentence can be committed without title, place, time, or source
+ok 26 - one sentence can be committed without title, place, time, or source
+  ---
+  duration_ms: 9.4272
+  type: 'test'
+  ...
+# Subtest: draft context is captured independently of subsequent map selection
+ok 27 - draft context is captured independently of subsequent map selection
+  ---
+  duration_ms: 1.5709
+  type: 'test'
+  ...
+# Subtest: autosave persists the settled draft in less than the one-second target
+ok 28 - autosave persists the settled draft in less than the one-second target
+  ---
+  duration_ms: 355.2975
+  type: 'test'
+  ...
+# Subtest: input arriving during an in-flight draft save is persisted as a later version
+ok 29 - input arriving during an in-flight draft save is persisted as a later version
+  ---
+  duration_ms: 0.4868
+  type: 'test'
+  ...
+# Subtest: draft network failure retains text and retries exactly the original request
+ok 30 - draft network failure retains text and retries exactly the original request
+  ---
+  duration_ms: 0.692
+  type: 'test'
+  ...
+# Subtest: lost formal commit receipt retries idempotently and blocks ambiguous edits
+ok 31 - lost formal commit receipt retries idempotently and blocks ambiguous edits
+  ---
+  duration_ms: 0.4371
+  type: 'test'
+  ...
+# Subtest: conflicting formal edit retains recoverable draft and permits a separate entry
+ok 32 - conflicting formal edit retains recoverable draft and permits a separate entry
+  ---
+  duration_ms: 0.6117
+  type: 'test'
+  ...
+# Subtest: a reopened editing draft keeps its original expected revision
+ok 33 - a reopened editing draft keeps its original expected revision
+  ---
+  duration_ms: 0.2537
+  type: 'test'
+  ...
+# Subtest: conflicting draft can be preserved independently without overwriting another editor
+ok 34 - conflicting draft can be preserved independently without overwriting another editor
+  ---
+  duration_ms: 0.3168
+  type: 'test'
+  ...
+# Subtest: predictions preserve their first revision and identity through later changes
+ok 35 - predictions preserve their first revision and identity through later changes
+  ---
+  duration_ms: 0.2937
+  type: 'test'
+  ...
+# Subtest: reviews pin the assessed prediction revision and store the user judgment
+ok 36 - reviews pin the assessed prediction revision and store the user judgment
+  ---
+  duration_ms: 0.3024
+  type: 'test'
+  ...
+# Subtest: adoption preserves message provenance and protected undo rejects later edits
+ok 37 - adoption preserves message provenance and protected undo rejects later edits
+  ---
+  duration_ms: 0.3893
+  type: 'test'
+  ...
+# Subtest: same place is counted once per entry while preserving explicit multi-place association
+ok 38 - same place is counted once per entry while preserving explicit multi-place association
+  ---
+  duration_ms: 0.223
+  type: 'test'
+  ...
+# Subtest: real SQLite: autosaved draft survives reopening; formal commit deletes draft atomically
+ok 39 - real SQLite: autosaved draft survives reopening; formal commit deletes draft atomically
+  ---
+  duration_ms: 93.0625
+  type: 'test'
+  ...
+# Subtest: real SQLite: stale edit is rejected and every prediction version remains assessable
+ok 40 - real SQLite: stale edit is rejected and every prediction version remains assessable
+  ---
+  duration_ms: 108.1114
+  type: 'test'
+  ...
+# Subtest: C08 pinned evidence never resolves to a newer revision, including changed text
+ok 41 - C08 pinned evidence never resolves to a newer revision, including changed text
+  ---
+  duration_ms: 1.2457
+  type: 'test'
+  ...
+# Subtest: A03 and A04 exact source scope, version and original quote are verified
+ok 42 - A03 and A04 exact source scope, version and original quote are verified
+  ---
+  duration_ms: 0.2242
+  type: 'test'
+  ...
+# Subtest: Invalid fragments do not silently fall back to a matching whole-body quote
+ok 43 - Invalid fragments do not silently fall back to a matching whole-body quote
+  ---
+  duration_ms: 0.1843
+  type: 'test'
+  ...
+# Subtest: Document block IDs locate the exact stable paragraph
+ok 44 - Document block IDs locate the exact stable paragraph
+  ---
+  duration_ms: 0.159
+  type: 'test'
+  ...
+# Subtest: Message reference requires its stable identity, complete status and discussion ID
+ok 45 - Message reference requires its stable identity, complete status and discussion ID
+  ---
+  duration_ms: 0.1361
+  type: 'test'
+  ...
+# Subtest: K04 deleted sources retain verifiable snapshots and recovery status
+ok 46 - K04 deleted sources retain verifiable snapshots and recovery status
+  ---
+  duration_ms: 0.1156
+  type: 'test'
+  ...
+# Subtest: K05 unparsed attachment cannot be treated as searchable historical original
+ok 47 - K05 unparsed attachment cannot be treated as searchable historical original
+  ---
+  duration_ms: 0.5315
+  type: 'test'
+  ...
+# Subtest: K02 relation direction enforces concepts, arguments and prediction targets
+ok 48 - K02 relation direction enforces concepts, arguments and prediction targets
+  ---
+  duration_ms: 0.6255
+  type: 'test'
+  ...
+# Subtest: Symmetric relatedTo canonicalization deduplicates and permits cycles without traversal
+ok 49 - Symmetric relatedTo canonicalization deduplicates and permits cycles without traversal
+  ---
+  duration_ms: 0.8173
+  type: 'test'
+  ...
+# Subtest: R07 and K03 incoming references include shared document blocks and reverse relations
+ok 50 - R07 and K03 incoming references include shared document blocks and reverse relations
+  ---
+  duration_ms: 0.9126
+  type: 'test'
+  ...
+# Subtest: K06 adoption preparation is pure and keeps the pinned message lineage
+ok 51 - K06 adoption preparation is pure and keeps the pinned message lineage
+  ---
+  duration_ms: 0.4276
+  type: 'test'
+  ...
+# Subtest: K06 undo protects later edits and restores by a new revision, never overwrites history
+ok 52 - K06 undo protects later edits and restores by a new revision, never overwrites history
+  ---
+  duration_ms: 0.2339
+  type: 'test'
+  ...
+# Subtest: Text blocks preserve identities across reordering and duplicate paragraphs stay distinct
+ok 53 - Text blocks preserve identities across reordering and duplicate paragraphs stay distinct
+  ---
+  duration_ms: 0.3572
+  type: 'test'
+  ...
+# Subtest: Outline excludes code fences and version diff keeps exact Chinese changes
+ok 54 - Outline excludes code fences and version diff keeps exact Chinese changes
+  ---
+  duration_ms: 0.3966
+  type: 'test'
+  ...
+# Subtest: Business validation rejects missing body, invalid kinds, duplicate paragraphs and unsafe URL
+ok 55 - Business validation rejects missing body, invalid kinds, duplicate paragraphs and unsafe URL
+  ---
+  duration_ms: 0.2945
+  type: 'test'
+  ...
+# Subtest: Real Workspace integration: pinned evidence, deletion/restore, atomic adoption and revision guarded undo
+ok 56 - Real Workspace integration: pinned evidence, deletion/restore, atomic adoption and revision guarded undo
+  ---
+  duration_ms: 117.9518
+  type: 'test'
+  ...
+# Subtest: provider endpoint accepts root, /v1 and complete path without duplication
+ok 57 - provider endpoint accepts root, /v1 and complete path without duplication
+  ---
+  duration_ms: 1.3974
+  type: 'test'
+  ...
+# Subtest: A01 persona editing preserves original sources; new/save/start replay protect all payload fields
+ok 58 - A01 persona editing preserves original sources; new/save/start replay protect all payload fields
+  ---
+  duration_ms: 125.9883
+  type: 'test'
+  ...
+# Subtest: A02 source coverage separates ready, unparsed and unavailable material
+ok 59 - A02 source coverage separates ready, unparsed and unavailable material
+  ---
+  duration_ms: 57.081
+  type: 'test'
+  ...
+# Subtest: A03/A04 actual SQLite retrieval freezes sources, context and persona; private data never sent
+ok 60 - A03/A04 actual SQLite retrieval freezes sources, context and persona; private data never sent
+  ---
+  duration_ms: 79.6525
+  type: 'test'
+  ...
+# Subtest: A03 citations use shared validator; outside scope, wrong version and fake quotes never shown as original
+ok 61 - A03 citations use shared validator; outside scope, wrong version and fake quotes never shown as original
+  ---
+  duration_ms: 56.4613
+  type: 'test'
+  ...
+# Subtest: unconfigured discussion never fabricates a response and does not store phantom messages
+ok 62 - unconfigured discussion never fabricates a response and does not store phantom messages
+  ---
+  duration_ms: 53.9968
+  type: 'test'
+  ...
+# Subtest: A05 failure is persisted, retry uses stable original question, complete messages survive and replay is exact
+ok 63 - A05 failure is persisted, retry uses stable original question, complete messages survive and replay is exact
+  ---
+  duration_ms: 96.3408
+  type: 'test'
+  ...
+# Subtest: A05 cancellation persists interrupted status and releases discussion for the next turn
+ok 64 - A05 cancellation persists interrupted status and releases discussion for the next turn
+  ---
+  duration_ms: 76.5607
+  type: 'test'
+  ...
+# Subtest: A05 provider timeout, invalid output, authentication and network failures remain explicit
+ok 65 - A05 provider timeout, invalid output, authentication and network failures remain explicit
+  ---
+  duration_ms: 88.4963
+  type: 'test'
+  ...
+# Subtest: real local HTTP transport validates chat/completions protocol using explicit fake provider
+ok 66 - real local HTTP transport validates chat/completions protocol using explicit fake provider
+  ---
+  duration_ms: 38.8527
+  type: 'test'
+  ...
+# Subtest: C06 durable idempotent commit, request collision and revisions survive reopen
+ok 67 - C06 durable idempotent commit, request collision and revisions survive reopen
+  ---
+  duration_ms: 95.5588
+  type: 'test'
+  ...
+# Subtest: C07 every domain type rejects stale writes across connections; multi-object transaction rolls back
+ok 68 - C07 every domain type rejects stale writes across connections; multi-object transaction rolls back
+  ---
+  duration_ms: 117.4663
+  type: 'test'
+  ...
+# Subtest: soft delete / restore preserves object ID, fixed revisions, searchable deleted content and committed events
+ok 69 - soft delete / restore preserves object ID, fixed revisions, searchable deleted content and committed events
+  ---
+  duration_ms: 60.5535
+  type: 'test'
+  ...
+# Subtest: Chinese substring search, literal special characters and draft/status/place/predicate filters precede pagination
+ok 70 - Chinese substring search, literal special characters and draft/status/place/predicate filters precede pagination
+  ---
+  duration_ms: 61.3371
+  type: 'test'
+  ...
+# Subtest: exact source snapshots never expand corpus or silently upgrade revision
+ok 71 - exact source snapshots never expand corpus or silently upgrade revision
+  ---
+  duration_ms: 58.9241
+  type: 'test'
+  ...
+# Subtest: C09 paused projection reports its watermark and resumes, failed rebuild preserves prior index
+ok 72 - C09 paused projection reports its watermark and resumes, failed rebuild preserves prior index
+  ---
+  duration_ms: 65.0153
+  type: 'test'
+  ...
+# Subtest: D02 before / middle / flush failures leave no half commit; postcommit interruption is idempotently recoverable
+ok 73 - D02 before / middle / flush failures leave no half commit; postcommit interruption is idempotently recoverable
+  ---
+  duration_ms: 72.4902
+  type: 'test'
+  ...
+# Subtest: D01 streamed backup restores all revisions, objects, actual attachments, workspace identity and idempotency
+ok 74 - D01 streamed backup restores all revisions, objects, actual attachments, workspace identity and idempotency
+  ---
+  duration_ms: 163.8362
+  type: 'test'
+  ...
+# Subtest: D03 broken/truncated/missing attachment backup never changes empty workspace; recovery can retry
+ok 75 - D03 broken/truncated/missing attachment backup never changes empty workspace; recovery can retry
+  ---
+  duration_ms: 154.5811
+  type: 'test'
+  ...
+# Subtest: attachments validate actual bytes and failed attachment writes leave no claimed success
+ok 76 - attachments validate actual bytes and failed attachment writes leave no claimed success
+  ---
+  duration_ms: 47.8652
+  type: 'test'
+  ...
+# Subtest: D04 schema initialization failure rolls back; future versions remain untouched
+ok 77 - D04 schema initialization failure rolls back; future versions remain untouched
+  ---
+  duration_ms: 52.6833
+  type: 'test'
+  ...
+# Subtest: restore process exit during file swap rolls back on next launch and preserves original workspace identity
+ok 78 - restore process exit during file swap rolls back on next launch and preserves original workspace identity
+  ---
+  duration_ms: 228.2325
+  type: 'test'
+  ...
+1..78
+# tests 78
+# suites 0
+# pass 78
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1499.7327

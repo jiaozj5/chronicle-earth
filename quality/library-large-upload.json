@@ -1,0 +1,16 @@
+{
+  "sourceBytes": 138778880,
+  "packageBytes": 316516009,
+  "packageSha256": "79d37bd5cbcb38e49850917d9e5b8ac1a867809a0246660f9d281370e0272803",
+  "pages": 563,
+  "pageImages": 563,
+  "blocks": 28561,
+  "pagesNeedingReview": [
+    2,
+    26
+  ],
+  "verifiedAssets": 565,
+  "uncompressedBytes": 366241314,
+  "originalPdfHashMatches": true,
+  "annotations": 0
+}

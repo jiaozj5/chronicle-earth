@@ -1,0 +1,19 @@
+{
+  "name": "chronicle-earth",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "start": "node apps/server/main.js",
+    "test": "node --test",
+    "check": "node scripts/check.mjs",
+    "test:acceptance": "node scripts/acceptance.mjs",
+    "test:performance": "node tests/performance/run.mjs",
+    "test:library": "node --test features/library/*.test.js",
+    "test:library:ui": "node features/library/browser-check.mjs",
+    "test:library:performance": "node features/library/performance.mjs"
+  }
+}

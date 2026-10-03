@@ -1,0 +1,23 @@
+node_modules/
+.local/
+.test-data/
+quality/screenshots/
+quality/tmp/
+*.log
+*.sqlite*
+.env
+.env.*
+!.env.example
+
+# Personal exports, local runtimes and generated client configuration
+*.chronicle
+*.book.zip
+__pycache__/
+*.py[cod]
+.venv/
+integrations/chronicle-library/codex.toml
+integrations/chronicle-library/mcp.json
+
+# Local visual verification artifacts (reports remain versioned)
+features/atlas/quality/*.png
+features/knowledge/qa/*.png

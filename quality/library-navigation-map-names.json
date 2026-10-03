@@ -1,0 +1,31 @@
+{
+  "verifiedAt": "2026-10-02T12:54:35.399Z",
+  "tests": {
+    "passed": 156,
+    "failed": 0,
+    "syntaxModules": 90
+  },
+  "chinesePlaceCoverage": {
+    "total": 2524,
+    "chinese": 2524,
+    "latinLabels": 0
+  },
+  "browser": {
+    "isolated": true,
+    "checks": [
+      "main navigation excludes conversion",
+      "library contains conversion entry",
+      "conversion completes without automatic publication",
+      "explicit add opens readable publication",
+      "legacy conversion job link retains selected task inside library",
+      "pinyin search returns Chinese place name and country",
+      "selected map label and chip are Chinese"
+    ],
+    "consoleErrors": 0,
+    "screenshots": [
+      "quality/screenshots/library-integrated-conversion.png",
+      "quality/screenshots/map-chinese-labels.png"
+    ]
+  },
+  "localServer": "updated and verified"
+}

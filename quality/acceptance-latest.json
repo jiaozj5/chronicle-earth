@@ -1,0 +1,199 @@
+{
+  "suite": "Independent acceptance: real SQLite, loopback HTTP, Edge UI",
+  "environment": {
+    "date": "2026-10-01T23:32:25.562Z",
+    "node": "v24.19.0",
+    "platform": "win32",
+    "osRelease": "10.0.26200",
+    "osVersion": "Windows 11 Home China",
+    "cpu": "AMD Ryzen 7 H 255 w/ Radeon 780M Graphics      ",
+    "logicalProcessors": 16,
+    "totalMemoryGiB": 31.27,
+    "storage": "Filesystem on execution host; SSD type not independently verified",
+    "referenceR0Verified": false,
+    "network": "Local application and simulated provider use loopback; explicit request-blocking is described by each scenario",
+    "browser": "154.0.4258.48"
+  },
+  "cases": [
+    {
+      "id": "HTTP01",
+      "name": "本机来源与会话令牌保护",
+      "status": "passed",
+      "durationMs": 35.5,
+      "evidence": null
+    },
+    {
+      "id": "R02",
+      "name": "无时间地点也可保存与中文正文检索",
+      "status": "passed",
+      "durationMs": 81.3,
+      "evidence": null
+    },
+    {
+      "id": "C01_C05",
+      "name": "多地点去重、筛选不改变探索",
+      "status": "passed",
+      "durationMs": 44.3,
+      "evidence": null
+    },
+    {
+      "id": "C03_C04",
+      "name": "迁移时空、删除最后记录及恢复一致",
+      "status": "passed",
+      "durationMs": 109.1,
+      "evidence": null
+    },
+    {
+      "id": "C06",
+      "name": "相同提交重放三次且不允许异载荷复用",
+      "status": "passed",
+      "durationMs": 60.6,
+      "evidence": null
+    },
+    {
+      "id": "R08",
+      "name": "预言原始版本和用户修订均保留",
+      "status": "passed",
+      "durationMs": 45.7,
+      "evidence": null
+    },
+    {
+      "id": "HTTP02",
+      "name": "服务端拒绝改变预言身份和无效记录",
+      "status": "passed",
+      "durationMs": 31.2,
+      "evidence": null
+    },
+    {
+      "id": "C08_K04",
+      "name": "固定来源片段保持原版本，删除不丢失依赖",
+      "status": "passed",
+      "durationMs": 96.9,
+      "evidence": null
+    },
+    {
+      "id": "C06_live_retry",
+      "name": "引用后来变化仍能重放已确认请求",
+      "status": "passed",
+      "durationMs": 74.6,
+      "evidence": null
+    },
+    {
+      "id": "C07",
+      "name": "六类对象过期版本提交不覆盖已确认内容",
+      "status": "passed",
+      "durationMs": 371.2,
+      "evidence": null
+    },
+    {
+      "id": "A01_A04",
+      "name": "真实 HTTP 对话协议只发送冻结范围与选定上下文",
+      "status": "passed",
+      "durationMs": 127,
+      "evidence": {
+        "provider": "Loopback protocol stub; not a real model evaluation",
+        "requestCount": 1
+      }
+    },
+    {
+      "id": "A03",
+      "name": "越范围引用不能伪装为原文",
+      "status": "passed",
+      "durationMs": 0.5,
+      "evidence": null
+    },
+    {
+      "id": "A05",
+      "name": "无模型时明确失败，普通保存继续可用",
+      "status": "passed",
+      "durationMs": 44.5,
+      "evidence": null
+    },
+    {
+      "id": "HTTP03",
+      "name": "设置不回显密钥，静态资源不能读取设置",
+      "status": "passed",
+      "durationMs": 27.4,
+      "evidence": null
+    },
+    {
+      "id": "R10_K06",
+      "name": "采纳原子提交、幂等与创建型撤销",
+      "status": "passed",
+      "durationMs": 200.1,
+      "evidence": null
+    },
+    {
+      "id": "K06_conflict",
+      "name": "撤销不会覆盖采纳后的编辑",
+      "status": "passed",
+      "durationMs": 77.5,
+      "evidence": null
+    },
+    {
+      "id": "K06_stale_adoption",
+      "name": "采纳修订必须基于用户看过的目标版本",
+      "status": "passed",
+      "durationMs": 61.8,
+      "evidence": null
+    },
+    {
+      "id": "R10_existing_undo",
+      "name": "修订型采纳撤销建立新版本并保留原始正文",
+      "status": "passed",
+      "durationMs": 79.5,
+      "evidence": null
+    },
+    {
+      "id": "C09",
+      "name": "暂停索引水位可辨且100项积压恢复后收敛",
+      "status": "passed",
+      "durationMs": 62.1,
+      "evidence": {
+        "recoveryMs": 16.3
+      }
+    },
+    {
+      "id": "HTTP04",
+      "name": "中断与用户消息不进入采纳链",
+      "status": "passed",
+      "durationMs": 30.9,
+      "evidence": null
+    },
+    {
+      "id": "D01_D03",
+      "name": "完整备份恢复并逐版本、实际附件摘要核对",
+      "status": "passed",
+      "durationMs": 642.3,
+      "evidence": {
+        "objects": 2652,
+        "allRevisionHash": "a38120f73f9069c9a7e272800ba039c05333d48fcee79d457c4dc7d1644af3be",
+        "actualAttachmentHash": "047429ee2e6a75a27cb9e8e5f0a1c85338d485b7722cfb3022b81c03820d7955"
+      }
+    },
+    {
+      "id": "R01_R03_R05_N02",
+      "name": "真实浏览器一句记录、草稿刷新恢复、离线写入",
+      "status": "passed",
+      "durationMs": 2879.6,
+      "evidence": {
+        "pageErrors": [],
+        "screenshots": ".test-data/acceptance-1790897545564",
+        "zoom": "720×450 CSS viewport checks equivalent layout of a 1440×900 window at 200%; browser zoom control itself not automated",
+        "ime": "Synthetic composition events only; real OS Chinese IME still requires human testing"
+      }
+    },
+    {
+      "id": "M06",
+      "name": "底图资源失败时仍能记录与查找",
+      "status": "passed",
+      "durationMs": 640.5,
+      "evidence": null
+    }
+  ],
+  "realModel": "Not configured by user choice; protocol stub does not verify A07",
+  "realUsers": "Not performed; G5 remains unverified",
+  "output": ".test-data/acceptance-1790897545564",
+  "passed": 23,
+  "failed": 0
+}

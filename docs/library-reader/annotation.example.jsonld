@@ -1,0 +1,75 @@
+{
+  "@context": [
+    "http://www.w3.org/ns/anno.jsonld",
+    {
+      "cr": {
+        "@id": "urn:chronicle:reading:",
+        "@prefix": true
+      }
+    }
+  ],
+  "id": "urn:chronicle:annotation_example",
+  "type": "Annotation",
+  "created": "2026-10-02T00:00:00Z",
+  "modified": "2026-10-02T00:00:00Z",
+  "motivation": "commenting",
+  "creator": {
+    "type": "Person",
+    "name": "示例读者"
+  },
+  "body": {
+    "type": "TextualBody",
+    "format": "text/plain",
+    "language": "zh-CN",
+    "value": "原文、我的理解与识别结果应当分别保留。"
+  },
+  "target": [
+    {
+      "type": "SpecificResource",
+      "cr:segmentIndex": 0,
+      "source": "urn:chronicle:rendition_example_1:block_example_1",
+      "selector": [
+        {
+          "type": "TextPositionSelector",
+          "start": 6,
+          "end": 13
+        },
+        {
+          "type": "TextQuoteSelector",
+          "exact": "区分原文与批注",
+          "prefix": "阅读📚时，要",
+          "suffix": "。"
+        }
+      ]
+    }
+  ],
+  "cr:profile": "chronicle-reading-1",
+  "cr:publicationId": "publication_example",
+  "cr:renditionId": "rendition_example_1",
+  "cr:revision": 1,
+  "cr:mark": {
+    "type": "underline",
+    "color": "#B76545",
+    "opacity": 1
+  },
+  "cr:targets": [
+    {
+      "kind": "text",
+      "blockId": "block_example_1",
+      "start": 6,
+      "end": 13,
+      "exact": "区分原文与批注",
+      "prefix": "阅读📚时，要",
+      "suffix": "。"
+    }
+  ],
+  "cr:deleted": false,
+  "cr:recognition": [
+    {
+      "method": "manual",
+      "status": "verified",
+      "confidence": null
+    }
+  ],
+  "cr:exampleOnly": true
+}

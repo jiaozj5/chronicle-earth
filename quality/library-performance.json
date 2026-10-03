@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-01T23:37:32.950Z",
+  "dataset": {
+    "pages": 500,
+    "blocks": 5000,
+    "annotations": 10000,
+    "kind": "synthetic text; excludes OCR conversion and browser interaction"
+  },
+  "node": "v24.19.0",
+  "output": ".test-data/library-scale-1790897848762",
+  "bulkImportMs": 3062.0577,
+  "measurements": {
+    "book_outline": {
+      "p50Ms": 0.13520000000016807,
+      "p95Ms": 0.3726999999998952,
+      "maxMs": 1.1700999999998203
+    },
+    "book_read": {
+      "p50Ms": 0.1224000000001979,
+      "p95Ms": 0.1714999999999236,
+      "maxMs": 0.333299999999781
+    },
+    "annotation_list": {
+      "p50Ms": 0.3350000000000364,
+      "p95Ms": 3.604399999999714,
+      "maxMs": 119.43039999999974
+    },
+    "book_search": {
+      "p50Ms": 1.3933000000001812,
+      "p95Ms": 2.4648999999999432,
+      "maxMs": 2.8674000000000888
+    }
+  },
+  "singleAnnotationSaveMs": 7.122699999999895,
+  "exportMs": 831.9409,
+  "exportBytes": 693850
+}

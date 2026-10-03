@@ -1,0 +1,10 @@
+import path from 'node:path';import os from 'node:os';import {mkdir,writeFile} from 'node:fs/promises';import {createRequire} from 'node:module';
+import {createAppServer} from '../apps/server/main.js';
+const require=createRequire(import.meta.url);let playwright;try{playwright=require('playwright');}catch{playwright=require(path.join(os.homedir(),'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));}
+const output=path.resolve('.test-data','smoke-'+Date.now());await mkdir(output,{recursive:true});const app=await createAppServer({dataDir:path.join(output,'workspace')});await new Promise(resolve=>app.server.listen(0,'127.0.0.1',resolve));const base='http://127.0.0.1:'+app.server.address().port;
+let browser;const errors=[];try{
+ browser=await playwright.chromium.launch({headless:true,channel:'msedge'});const page=await browser.newPage({viewport:{width:1440,height:1000}});page.on('pageerror',e=>errors.push(e.message));await page.goto(base);await page.locator('.chronicle-root').waitFor();await page.waitForTimeout(1000);await page.screenshot({path:path.join(output,'initial.png'),fullPage:true});
+ await page.getByRole('button',{name:'＋ 记一笔',exact:true}).click();await page.getByRole('textbox',{name:'记录正文',exact:true}).fill('我对这段岁月的一个理解。\n\n这是一条真实保存与恢复的验收记录。');await page.getByRole('textbox',{name:'发生时间',exact:true}).fill('1850—1860');await page.getByRole('textbox',{name:'发生时间',exact:true}).press('Tab');await page.getByRole('button',{name:'记下',exact:true}).click();await page.getByRole('button',{name:'编辑',exact:true}).waitFor({timeout:10000});await page.screenshot({path:path.join(output,'saved.png'),fullPage:true});
+ await page.reload();await page.locator('.chronicle-record-row').first().waitFor();await page.locator('.chronicle-record-row').first().click();await page.screenshot({path:path.join(output,'reloaded.png'),fullPage:true});
+ console.log(JSON.stringify({base,output,errors,stats:app.workspace.stats()},null,2));await writeFile(path.join(output,'report.json'),JSON.stringify({errors,stats:app.workspace.stats()},null,2));
+}finally{await browser?.close();await app.close();}

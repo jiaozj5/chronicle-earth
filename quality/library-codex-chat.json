@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-02",
+  "automated": {"tests": 137, "passed": 137, "javascriptModules": 73},
+  "connection": {
+    "transport": "official Codex app-server, stdio JSON-RPC",
+    "authentication": "existing ChatGPT login managed by Codex",
+    "realInferenceVerified": true,
+    "model": "inherits local Codex default; observed gpt-6-astra",
+    "credentialsReadOrCopied": false,
+    "persistentCodexThreadsCreated": false
+  },
+  "browser": {
+    "data": "isolated synthetic PDF and workspace; no test messages or annotations written to user books",
+    "provider": "real local Codex, not a fake response provider",
+    "checks": [
+      "connected state shown in the reader sidebar",
+      "question sent by button and by Enter, answer displayed in the same sidebar",
+      "Shift+Enter inserts a newline without sending",
+      "current page image successfully attached to real inference",
+      "follow-up answers use prior conversation; short annotation example returned",
+      "new conversation and conversation selector work",
+      "messages survive page reload and isolated server restart",
+      "stop during connection reaches interrupted status and allows retry",
+      "retry after turning from page 1 to page 2 still answers the original page 1 question",
+      "network retry fragments replaced by final turn content; additional automated regression test",
+      "streaming updates only the active message; previous history remains mounted",
+      "directory collapse expands the chat log while the composer stays at the bottom"
+    ],
+    "consoleErrors": [],
+    "screenshot": "screenshots/library/codex-companion-chat.png"
+  },
+  "productionReadOnly": {
+    "serverRestarted": true,
+    "url": "http://127.0.0.1:4317",
+    "codexConnected": true,
+    "authType": "chatgpt",
+    "existingBookPages": 563,
+    "existingBookHeadings": 218,
+    "outlineSource": "pdf-bookmarks",
+    "outlineWarning": null,
+    "existingUserTabRefreshed": false
+  },
+  "limits": [
+    "chat explains provided page and selection; it does not search the whole book or automatically write notes",
+    "MCP tools remain available separately through the advanced Agent interface",
+    "recent model history: 24 completed messages, at most 18000 characters; page text capped at 22000 characters with truncation flag",
+    "chat UI loads latest 200 messages; earlier messages remain stored",
+    "Codex account limits and network availability affect reply speed; interruptions are explicit and retryable"
+  ]
+}

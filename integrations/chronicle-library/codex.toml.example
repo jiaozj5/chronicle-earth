@@ -1,0 +1,8 @@
+# Prefer generating actual paths with: node scripts/export-library-integration.mjs
+# Replace the example script path before using this configuration.
+[mcp_servers.chronicle-library]
+command = "node"
+args = ["C:/path/to/chronicle-earth/scripts/library-mcp.mjs"]
+
+[mcp_servers.chronicle-library.env]
+CHRONICLE_URL = "http://127.0.0.1:4317"

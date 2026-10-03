@@ -1,0 +1,40 @@
+// Real SQLite + HTTP + browser integration. Test fixtures never populate a user's workspace.
+import {createAppServer} from '../../../apps/server/main.js';
+import {mkdtemp,mkdir,writeFile} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import path from 'node:path';
+import {createRequire} from 'node:module';
+import {fileURLToPath} from 'node:url';
+const require=createRequire(import.meta.url);
+const playwrightPath=process.env.PLAYWRIGHT_PATH||'C:/Users/jiaoz/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright';
+const {chromium}=require(playwrightPath);
+const dir=await mkdtemp(path.join(tmpdir(),'chronicle-atlas-check-'));
+const app=await createAppServer({dataDir:dir});
+await new Promise(resolve=>app.server.listen(0,'127.0.0.1',resolve));
+const port=app.server.address().port;
+let browser;
+try{
+ browser=await chromium.launch({headless:true,channel:process.env.PLAYWRIGHT_CHANNEL||'msedge'});const page=await browser.newPage({viewport:{width:1100,height:950}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(`http://127.0.0.1:${port}/features/atlas/tests/host.html`);
+ await page.evaluate(async()=>{const {api}=await import('/apps/client/api.js');await api.init();const {mount}=await import('/features/atlas/index.js');window.api=api;window.atlas=await mount(document.querySelector('#test-root'),{api,selection:{placeRefs:[],occurrenceTime:null},onSelection(s){window.selection=s;},notify(){}});});
+ await page.waitForFunction(()=>document.querySelector('.atlas-map-status')?.hidden===true);
+ await page.getByLabel('搜索地点',{exact:true}).fill('金陵');
+ await page.locator('.atlas-search-row').first().locator('button').first().click();
+ await page.waitForFunction(()=>window.selection?.placeRefs?.[0]?.originalName==='金陵');
+ await page.getByLabel('时间范围',{exact:true}).fill('1850—1860');await page.getByRole('button',{name:'进入',exact:true}).click();
+ await page.waitForFunction(()=>window.selection?.occurrenceTime?.earliest?.year===1850);
+ await page.evaluate(async()=>{await api.commit([{id:'atlas_check_note',objectType:'entry',expectedRevision:0,data:{title:'河运材料',body:'一条测试记录',kind:'note',status:'adopted',citations:[],occurrenceTime:selection.occurrenceTime,placeRefs:selection.placeRefs}}]);await atlas.refresh();});
+ await page.waitForFunction(()=>document.querySelector('.atlas-summary').textContent.startsWith('1 条已定位记录'));
+ await page.getByLabel('时间范围',{exact:true}).fill('2023-02-29');await page.getByRole('button',{name:'进入',exact:true}).click();
+ if(await page.getByLabel('时间范围',{exact:true}).getAttribute('aria-invalid')!=='true')throw Error('Invalid date field state absent');
+ await page.getByLabel('时间范围',{exact:true}).fill('1850—1860');await page.getByRole('button',{name:'进入',exact:true}).click();
+ page.once('dialog',d=>d.accept('十九世纪中叶'));await page.getByRole('button',{name:'保存图层',exact:true}).click();await page.waitForFunction(()=>[...document.querySelectorAll('.atlas-select option')].some(o=>o.textContent==='十九世纪中叶'));
+ await page.getByRole('button',{name:'全部时间',exact:true}).click();await page.waitForFunction(()=>window.selection.occurrenceTime===null);
+ await page.getByLabel('已保存的时间图层',{exact:true}).selectOption({label:'十九世纪中叶'});await page.waitForFunction(()=>window.selection.occurrenceTime?.earliest.year===1850);
+ await page.getByRole('button',{name:'＋ 自定义地点',exact:true}).click();await page.getByLabel('新地点名称',{exact:true}).fill('尚未定位的故地');await page.getByRole('button',{name:'保存地点',exact:true}).click();await page.waitForFunction(()=>window.selection.placeRefs.length===2);
+ await mkdir(new URL('../quality/',import.meta.url),{recursive:true});await page.screenshot({path:fileURLToPath(new URL('../quality/atlas-desktop.png',import.meta.url)),fullPage:true});
+ await page.getByRole('button',{name:'全球',exact:true}).click();await page.screenshot({path:fileURLToPath(new URL('../quality/atlas-world.png',import.meta.url)),fullPage:true});
+ const result={test:'Real SQLite/HTTP/browser Atlas integration',date:new Date().toISOString(),checks:['offline local geography','old-name location selection','time range selection','real save and exploration','invalid date feedback','save and reselect TimeView','clear time filter','text-only custom place and multi-location'],errors};
+ if(errors.length)throw Error(errors.join('\n'));
+ await writeFile(new URL('../quality/browser-check.json',import.meta.url),JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));
+}finally{await browser?.close();await app.close();}

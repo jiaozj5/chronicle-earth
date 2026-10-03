@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-01T22:34:58.049Z",
+  "test": "real SQLite / HTTP / Edge time-view and map-drawing UI",
+  "checks": [
+    "rename, split, merge and delete keep original entry ID, revision and body",
+    "split boundary enters following view without overlap",
+    "route pointer drawing, undo and finish",
+    "region pointer drawing, Ctrl+Enter finish",
+    "keyboard center-point and Escape cancellation",
+    "persisted GeoJSON and own-scale exploration",
+    "268px content width without overflow",
+    "dark theme screenshot"
+  ],
+  "errors": []
+}
